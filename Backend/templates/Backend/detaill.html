@@ -1,0 +1,31 @@
+{% extends 'backend/Base.html' %}
+{% block content %}
+<section class="featured-product">
+    <div class="container">
+        <div class="row">
+            <div class="image-conatiner">
+                <div class="big-image">
+                    <img src="{{items.imageURL}}" class="img-bx-big" alt="">
+                </div>
+            </div>
+            <div class="content">
+                <h3>{{items.title}}</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>{{items.description}}
+                </p>
+                <div class="price">{{items.discount_price}} $<span>  {{items.price}} $</span></div>
+                <div class="btn update_Cart"  data-product="{{items.id}}" data-action="add">ADD TO CARD</div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

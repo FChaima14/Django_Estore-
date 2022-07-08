@@ -1,0 +1,53 @@
+{% extends 'backend/Base.html' %}
+{% block content %}
+<section class="cart-container">
+    <table class="table">
+        <thead class="bg-color">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col"><strong class="index">name</strong></th>
+                <th scope="col"><strong class="index">Price</strong></th>
+                <th scope="col"><strong class="index">Quantity</strong></th>
+                <th scope="col"><strong class="index">Total</strong></th>
+                <th scope="col"></th>
+              </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr class="trow">
+                <td scope='row'><img class="row-image" src="{{ item.product.imageURL }}"></td>
+                <td><p>{{item.product.title}}</p></td>
+                <td><p>{{item.product.price|floatformat:2}}</p></td>
+                <td> <p>{{item.quantity}}</p></td>
+                <td><p>{{item.get_total}}</p></td>
+                <td><div class="icons-box">
+                    <div class="update_Cart" data-product="{{item.product.id}}" data-action="add"><i class="fas fa-cart-plus"></i></div>
+                    <i class="fas fa-trash update_Cart"  data-product="{{item.product.id}}" data-action="remove"></i>
+                </div></td>
+              </tr>
+              {% endfor %}
+        </tbody>
+      </table>
+</section>
+<section>
+    <table class="table total">
+        <thead class="bg-color">
+          <tr>
+            <th scope="col"><strong class="index">Total</strong></th>
+            <th scope="col"><strong class="index">Total price</strong></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><p class="index">{{order.getItemCart}}</p></th>
+            <td><p class="index">{{order.getTotatlCart}}</p></td>
+            <td><a href="checkout"><button class="btn2">Checkout</button></a></td>
+          </tr>
+        </tbody>
+      </table>
+
+</section>
+
+
+{% endblock content %}
