@@ -122,10 +122,10 @@ def signIn(request):
         print(username, password)
 
         user= authenticate(username=username, password=password);
-        customer=Customer.objects.create(user=user)
+        #customer=Customer.objects.create(user=user)
         if user is not None:
             login(request, user)
-            customer.save();
+            #customer.save();
             print('user logged')
             return redirect('Product_List');
         else:
