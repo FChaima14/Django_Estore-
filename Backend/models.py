@@ -34,7 +34,7 @@ class Product(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1, null=True, blank=True)
     slug = models.SlugField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.CharField(max_length=1000, null=True, blank=True)
     digital=models.BooleanField(null=True, default=False);
 
     def __str__(self):
@@ -43,7 +43,7 @@ class Product(models.Model):
     @property
     def imageURL(self):
         try:
-            url= self.image.url;
+            url= self.image;
         except:
             url= '';
         return url;
